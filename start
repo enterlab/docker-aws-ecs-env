@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+cd /usr/src/app
+source get-private-ip
+echo "The CONTAINER_IP: $CONTAINER_IP"
+echo "The HOST_IP: $HOST_IP"
+echo "The EC2_PRIVATE_IP: $EC2_PRIVATE_IP"
+

@@ -1,0 +1,13 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "docker-env",
+      "image": "luposlip/docker-env",
+      "cpu": 50,
+      "memory": 50,
+      "essential": true
+    }
+  ],
+  "family": "docker-env"
+}
+

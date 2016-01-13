@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# On the OSX host:
+#HOST_IP=$(ifconfig en0 | grep "inet " | tr " " "\n" | tail -n1)
+
+# Inside the docker container
+CONTAINER_IP=$(ip addr | grep 'state UP' -A2 | grep 'eth0' -A2 | grep 'inet' | cut -f1 -d'/' | tr " " "\n" | tail -n1)
+HOST_IP=$(ip -4 addr show eth0 | grep -Po 'inet \K[\d.]+')
+EC2_PRIVATE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
