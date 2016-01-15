@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 cd /usr/src/app
-source get-private-ip
-echo "The CONTAINER_IP: $CONTAINER_IP"
-echo "The HOST_IP: $HOST_IP"
-echo "The EC2_PRIVATE_IP: $EC2_PRIVATE_IP"
 
+# Get Docker Container internal IP
+CONTAINER_IP=$(ip -4 addr show eth0 | grep -Po 'inet \K[\d.]+')
+
+# Get Docker host/EC2 private IP
+EC2_PRIVATE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
+echo "CONTAINER_IP: $CONTAINER_IP"
+echo "EC2_PRIVATE_IP: $EC2_PRIVATE_IP"
+
+# If you want to insert container/host IP addresses into e.g. a Datomic Transactor:
+# host=DATOMIC_CONTAINER_IP
+# alt-host=EC2_PRIVATE_IP
+eval sed -i -e 's/DATOMIC_CONTAINER_IP/$CONTAINER_IP/g' transactor-ensured.properties
+eval sed -i -e 's/DATOMIC_HOST_IP/$EC2_PRIVATE_IP/g' transactor-ensured.properties
