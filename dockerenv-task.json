@@ -3,7 +3,7 @@
     {
       "name": "docker-env",
       "image": "luposlip/docker-env",
-      "cpu": 50,
+      "cpu": 10,
       "memory": 50,
       "essential": true
     }
