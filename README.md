@@ -24,8 +24,7 @@ Sample output:
 
 ```
 The CONTAINER_IP: 172.17.0.3
-The HOST_IP: 172.17.0.3
-The EC2_PRIVATE_IP: 172.32.27.231
+The EC2_PRIVATE_IP: 10.0.1.173
 ```
 
 ## Why?
