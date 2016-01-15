@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER "henrik@ourhub.dk"
+MAINTAINER "henrik@enterlab.dk"
 
 RUN apt-get install -y curl
 
